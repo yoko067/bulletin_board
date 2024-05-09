@@ -1,0 +1,30 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body class="login-body">
+    <header>
+      <h1>Login</h1>
+    </header>
+    <!-- ログインフォームなどの要素を追加 -->
+    <form action="/login-app//login" method="post" class="login-form">
+      <label for="username">ユーザー名</label>
+      <input type="text" id="username" name="username" required />
+      <br />
+      <label for="password">パスワード</label>
+      <input type="password" id="password" name="password" required />
+      <br />
+      <button type="submit" class="btn">ログイン</button>
+    </form>
+
+    <!-- 新規登録へのリンクをボタン風にスタイリング -->
+    <p class="register-link">
+      <a href="/login-app/register" class="btn">新規登録</a>
+    </p>
+  </body>
+</html>
