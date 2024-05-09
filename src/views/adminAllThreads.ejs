@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="allThreads.css" />
+    <title>スレッド一覧</title>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/thread" class="top-page-link">FORUM APP</a></h1>
+    </header>
+    <div class="threads-container">
+      <h2>THREADS</h2>
+      <% if (!threads || threads.length === 0) { %>
+      <p class="no-thread">まだスレッドはありません</p>
+      <% } else { %>
+      <table class="thread-table">
+        <thead>
+          <tr>
+            <th class="thread-table-head">No.</th>
+            <th class="thread-table-head">スレッド名</th>
+            <th class="thread-table-head">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const thread of threads) { %>
+          <tr class="thread-row">
+            <td class="thread-table-data thread-id"><%= thread.threadId %></td>
+            <td class="thread-table-data thread-content">
+              <a href="/thread/<%= thread.threadId %>" class="thread-link">
+                <div class="thread-title-container"><%= thread.title %></div>
+              </a>
+            </td>
+            <td class="thread-table-data operations">
+              <form
+                action="/thread/<%= thread.threadId %>?_method=delete"
+                method="post"
+              >
+                <button type="submit" class="btn delete-button">削除</button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+    <form action="/login-app/logout" method="post" class="add-form">
+      <button type="submit" class="btn">ログアウト</button>
+    </form>
+    <div class="add-container">
+      <h2>スレッドを追加</h2>
+      <form action="/thread" method="post" class="add-form">
+        <label for="threadTitle" class="bold">スレッド名:</label>
+        <input
+          type="text"
+          id="threadTitle"
+          class="add-input"
+          name="title"
+          required
+        />
+        <button type="submit" class="btn">スレッドを追加</button>
+      </form>
+    </div>
+  </body>
+</html>

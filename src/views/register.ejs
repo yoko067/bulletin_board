@@ -1,0 +1,30 @@
+<!-- views/register.ejs -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body class="register-body">
+    <header>
+      <h1>Register</h1>
+    </header>
+    <div class="form-container">
+      <!-- ユーザー登録フォームなどの要素を追加 -->
+      <form action="/login-app/register" method="post" class="login-form">
+        <label for="username">ユーザー名</label>
+        <input type="text" id="username" name="username" required />
+        <br />
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password" required />
+        <br />
+        <button type="submit" class="btn">新規登録</button>
+      </form>
+      <p class="register-link">
+        <a href="/" class="btn">ログイン</a>
+      </p>
+    </div>
+  </body>
+</html>

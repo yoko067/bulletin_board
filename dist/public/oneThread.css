@@ -1,0 +1,167 @@
+/* list */
+
+.messages-container {
+  width: calc(100% - 40px);
+  box-sizing: border-box;
+  margin: 20px;
+  padding: 20px 40px;
+  border: 2px solid #330080;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  box-shadow: 0 1px 5px #ccc;
+}
+
+.messages-container h2 {
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.no-message {
+  text-align: center;
+  font-size: 1.5em;
+  color: #999;
+}
+
+.message-table {
+  width: 100%;
+  border-spacing: 0 1.5em;
+  margin-top: 10px;
+}
+
+.message-table-head {
+  background-color: transparent;
+  text-align: center;
+  padding: 4px 0;
+  border-left: 1px solid #b2b2b2;
+}
+
+.message-table-head:last-child {
+  border-right: 1px solid #b2b2b2;
+}
+
+.message-table-data {
+  background-color: transparent;
+  text-align: center;
+  padding: 1.5em 0;
+}
+
+.message-row {
+  box-shadow: 0 1px 5px #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.message-row td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.message-row td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.message-id {
+  width: 8em;
+}
+
+.reply-id {
+  color: red;
+}
+
+.message-content {
+  width: 50%;
+  font-size: 1.2em;
+  word-break: break-word;
+}
+
+.deleted-message {
+  color: #ccc;
+}
+
+.delete-button {
+  margin-right: 20px;
+}
+
+/* post search container */
+
+.post-search-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 0 -1px 5px #ccc;
+  border-top: 2px solid #330080;
+}
+
+/* post form */
+
+.post-container {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.post-container h2 {
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.post-form {
+  width: 100%;
+}
+
+.reply-target {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #b2b2b2;
+  margin: 10px 10px 5px;
+}
+
+.content-input-container {
+  display: flex;
+  align-items: center;
+}
+
+.content-input {
+  margin: 20px 20px 10px 10px;
+  padding: 5px;
+  font-size: 1.5em;
+  height: 2em;
+  width: calc(100% - 128px);
+  border: 1px solid #b2b2b2;
+  border-radius: 5px;
+  resize: none;
+}
+
+/* search container */
+
+.search-container {
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.search-container h2 {
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.search-form {
+  height: calc(100% - 1.5em);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  margin: 0 20px 0 10px;
+  padding: 5px;
+  font-size: 1em;
+  width: calc(100% - 256px);
+  border: 1px solid #b2b2b2;
+  border-radius: 5px;
+  resize: vertical;
+  min-width: 128px;
+}

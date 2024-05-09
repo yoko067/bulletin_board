@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>FORUM APP</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="oneThread.css" />
+    <script src="oneThread.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/thread" class="top-page-link">FORUM APP</a></h1>
+    </header>
+    <div class="messages-container">
+      <h2><%= threadName %></h2>
+      <% if (!messages || messages.length === 0) { %>
+      <p class="no-message">まだ投稿はありません</p>
+      <% } else {%>
+      <table class="message-table">
+        <thead>
+          <tr>
+            <th class="message-table-head">No.</th>
+            <th class="message-table-head">メッセージ</th>
+            <th class="message-table-head">時刻</th>
+            <th class="message-table-head">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (const message of messages) { %>
+          <tr class="message-row">
+            <td class="message-table-data message-id">
+              <%= message.msgNum %> <% if (message.replyId !== 0) { %><span
+                class="reply-id"
+              >
+                → <%= message.replyId %></span
+              ><% } %>
+            </td>
+            <td class="message-table-data message-content">
+              <% if (!message.deleted) { %>
+              <p><%= message.content %></p>
+              <% } else { %>
+              <p class="deleted-message">このメッセージは削除されました</p>
+              <% } %>
+            </td>
+
+            <td class="message-table-data message-time">
+              <%= message.dateTime.getFullYear() %>/<%=
+              (message.dateTime.getMonth() + 1).toString().padStart(2, '0')
+              %>/<%= message.dateTime.getDate().toString().padStart(2, '0')
+              %><%= getDayOfWeek(message.dateTime.getDay()) %> <%=
+              message.dateTime.getHours().toString().padStart(2, '0') %>:<%=
+              message.dateTime.getMinutes().toString().padStart(2, '0') %>:<%=
+              message.dateTime.getSeconds().toString().padStart(2, '0') %> <%
+              function getDayOfWeek(day) { %> <% if (day === 0) { %>(日)<% }
+              else if (day === 1) { %>(月)<% } else if (day === 2) { %>(火)<% }
+              else if (day === 3) { %>(水)<% } else if (day === 4) { %>(木)<% }
+              else if (day === 5) { %>(金)<% } else if (day === 6) { %>(土)<% }
+              %> <% } %>
+            </td>
+
+            <td class="message-table-data operations">
+              <% if (!message.deleted) { %>
+              <button type="submit" class="btn reply-button">リプライ</button>
+              <% } %>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+    <div class="post-search-container">
+      <div class="post-container">
+        <h2>ADD MESSAGE</h2>
+        <form action="/thread/<%= threadId %>" method="post" class="post-form">
+          <div class="reply-target">
+            <span class="reply-text-container">
+              <span class="bold">リプライ先: </span>
+              <span class="reply-text">指定されていません</span>
+              <input type="hidden" id="replyId" name="replyId" value="0" />
+            </span>
+            <span class="btn" id="cancel-reply"> リプライ解除 </span>
+          </div>
+          <div class="content-input-container">
+            <label for="content" style="display: none">forum</label>
+            <textarea
+              name="content"
+              id="content"
+              class="content-input"
+              placeholder="メッセージを入力してください"
+              required
+            ></textarea>
+            <button type="submit" class="btn">投稿</button>
+          </div>
+        </form>
+      </div>
+      <div class="search-container">
+        <h2>SEARCH</h2>
+        <div class="search-form">
+          <label for="search" class="bold">検索対象: </label>
+          <input
+            type="text"
+            id="search"
+            class="search-input"
+            placeholder="入力"
+          />
+          <button class="btn" type="button" id="search-button">検索</button>
+          <button class="btn" type="button" id="show-all-button">
+            検索解除
+          </button>
+        </div>
+      </div>
+    </div>
+    <a class="go-to-top" href="#top">↑</a>
+  </body>
+</html>
